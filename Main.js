@@ -93,7 +93,9 @@ const quiz = function (logFile, x) {
                     if (value.length > 0) {
                         return true;
                     }
-                    return 'Come on, at least take a guess!';
+                    return 'Come on !! , take wild a guess!';
+                    console.log("")
+                    console.log("=========================")
                     console.log("")
                     
                 }
@@ -131,9 +133,9 @@ const quiz = function (logFile, x) {
     });
 };
 
-const writeToLog = function (logfile,info) {
+const writeToLog = function (logFile,info) {
 
-    fs.writeFile(logfile, info, function(err) {
+    fs.writeFile(logFile, info, function(err) {
         if (err)
             console.error(err);
     });
