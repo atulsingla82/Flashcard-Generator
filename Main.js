@@ -38,7 +38,7 @@ const flashcards = function() {
     }
     //***************************************** Functions *********************************
 
-const readCards = function(logfile) {
+const readCards = function(logFile) {
     cardArray = [];
     //This grabs any previously created cards and saves them to a new array...
     fs.readFile(logFile, "utf8", function(error, data) {
@@ -50,7 +50,7 @@ const readCards = function(logfile) {
         }
     });
 };
-const createCards = function (promptType, logfile) {
+const createCards = function (promptType, logFile) {
 
     inquirer.prompt(promptType).then(function(answers) {
 
@@ -77,7 +77,7 @@ const quiz = function (logFile, x) {
 
             if (jsonContent[x].hasOwnProperty("front")) {
 
-                var gameCard = new SimpleCard(jsonContent[x].front, jsonContent[x].back);
+                var gameCard = new Basic(jsonContent[x].front, jsonContent[x].back);
                 var gameQuestion = gameCard.front;
                 var gameAnswer = gameCard.back.toLowerCase();
             } else {
@@ -105,7 +105,10 @@ const quiz = function (logFile, x) {
             }]).then(function(answers) {
 
                 if (answers.question.toLowerCase().indexOf(gameAnswer) > -1) {
+                    console.log("")
+                    console.log("=========================")
                     console.log('Correct!');
+                    console.log("")
                     correct++;
                     x++;
                     quiz(logFile, x);
@@ -120,12 +123,12 @@ const quiz = function (logFile, x) {
 
         } else {
             console.log("")
-            console.log("--------------------------------------")
+            console.log("======================================")
             console.log('Here\'s how you did: ');
             console.log('correct: ' + correct);
             console.log('wrong: ' + wrong);
             console.log("")
-            console.log("--------------------------------------")
+            console.log("======================================")
             correct = 0;
             wrong = 0;
             flashcards();
