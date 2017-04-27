@@ -1,10 +1,12 @@
-var SimpleCard = require("./Basic");
+var Basic = require("./Basic");
 var Cloze = require("./Cloze");
 var inquirer = require("inquirer");
 var fs = require("fs");
 var correct = 0;
 var wrong = 0;
 var cardArray = [];
+
+
 // ********************************* Main Process *************************************
 
 const flashcards = function() {
@@ -25,7 +27,7 @@ const flashcards = function() {
             } else if (choice.userType === 'create-cloze-cards') {
                 readCards('cloze-log.txt');
                 createCards(clozePrompt, 'cloze-log.txt');
-            }else if (choice.userType === 'basic-quiz') {
+            } else if (choice.userType === 'basic-quiz') {
                 quiz('log.txt', 0);
             } else if (choice.userType === 'cloze-quiz') {
                 quiz('cloze-log.txt', 0);
@@ -36,20 +38,19 @@ const flashcards = function() {
     }
     //***************************************** Functions *********************************
 
-const readCards = function(logFile) {
+const readCards = function(logfile) {
     cardArray = [];
     //This grabs any previously created cards and saves them to a new array...
     fs.readFile(logFile, "utf8", function(error, data) {
 
         var jsonContent = JSON.parse(data);
 
-        for (var i = 0; i < jsonContent.length; i++) {
+        for (let i = 0; i < jsonContent.length; i++) {
             cardArray.push(jsonContent[i]);
         }
     });
 };
-
-const createCards = function (promptType, logFile) {
+const createCards = function (promptType, logfile) {
 
     inquirer.prompt(promptType).then(function(answers) {
 
@@ -93,6 +94,7 @@ const quiz = function (logFile, x) {
                     if (value.length > 0) {
                         return true;
                     }
+
                     return 'Come on !! , take wild a guess!';
                     console.log("")
                     console.log("=========================")
@@ -104,8 +106,6 @@ const quiz = function (logFile, x) {
 
                 if (answers.question.toLowerCase().indexOf(gameAnswer) > -1) {
                     console.log('Correct!');
-                    console.log("")
-     
                     correct++;
                     x++;
                     quiz(logFile, x);
@@ -129,6 +129,7 @@ const quiz = function (logFile, x) {
             correct = 0;
             wrong = 0;
             flashcards();
+           
         }
     });
 };
