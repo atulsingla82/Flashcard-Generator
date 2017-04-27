@@ -1,0 +1,23 @@
+{
+  "name": "flashcards",
+  "version": "0.0.1",
+  "description": "random flash card generator",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/atulsingla82/Flashcard-Generator.git"
+  },
+  "author": "atul",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/atulsingla82/Flashcard-Generator/issues"
+  },
+  "homepage": "https://github.com/atulsingla82/Flashcard-Generator#readme",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "inquirer": "^3.0.6"
+  }
+}
