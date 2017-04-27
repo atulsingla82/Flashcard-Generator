@@ -25,7 +25,7 @@ const flashcards = function() {
             } else if (choice.userType === 'create-cloze-cards') {
                 readCards('cloze-log.txt');
                 createCards(clozePrompt, 'cloze-log.txt');
-            } else if (choice.userType === 'basic-quiz') {
+            }else if (choice.userType === 'basic-quiz') {
                 quiz('log.txt', 0);
             } else if (choice.userType === 'cloze-quiz') {
                 quiz('cloze-log.txt', 0);
@@ -43,7 +43,7 @@ const readCards = function(logFile) {
 
         var jsonContent = JSON.parse(data);
 
-        for (let i = 0; i < jsonContent.length; i++) {
+        for (var i = 0; i < jsonContent.length; i++) {
             cardArray.push(jsonContent[i]);
         }
     });
@@ -157,7 +157,7 @@ const clozePrompt = [{
     name: "text",
     message: "Enter a sentence, with the word you want to hide in parentheses, example: 'I (cannot) tell a lie'",
     validate: function(value) {
-        var parentheses = "/\(\w.+\)/";
+        var parentheses = "";
         if (value.search(parentheses) > -1) {
             return true;
         }
