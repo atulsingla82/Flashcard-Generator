@@ -15,7 +15,10 @@ var Cloze = function(text, cloze) {
 
 Cloze.prototype.printAnswer = function() {
 
-    console.log('Incorrect. Here is the full sentence: \n' + this.text.replace(/[{()}]/g, ''));
+    console.log("")
+    console.log('Incorrect. The right anwer is: \n' + this.cloze);
+    console.log("")
+    console.log("--------------------------------------")
 }
 
 module.exports = Cloze;
